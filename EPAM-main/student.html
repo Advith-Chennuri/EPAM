@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Student Registration Form</h2>
+        <form id="registrationForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="year">Year:</label>
+            <input type="number" id="year" name="year" min="1" max="4" placeholder="Enter your year" required>
+
+            <label for="semester">Semester:</label>
+            <input type="number" id="semester" name="semester" min="1" max="2" placeholder="Enter your semester" required>
+
+            <label for="course">Courses:</label>
+            <select id="course" name="course" required>
+                <option value="">Select a course</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        // List of courses
+        const courses = ["Deep Learning", "Cloud Based AI/ML", "EPAM", "Parallel and Distributed Computing"];
+
+        // Populate the dropdown with courses
+        const courseDropdown = document.getElementById('course');
+        courses.forEach(course => {
+            const option = document.createElement('option');
+            option.value = course;
+            option.textContent = course;
+            courseDropdown.appendChild(option);
+        });
+
+        // Form submission event listener
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Capture form data
+            const name = document.getElementById('name').value;
+            const year = document.getElementById('year').value;
+            const semester = document.getElementById('semester').value;
+            const course = document.getElementById('course').value;
+
+            // Display a confirmation message
+            alert(`Registration Successful!\nName: ${name}\nYear: ${year}\nSemester: ${semester}\nCourse: ${course}`);
+
+            // Optionally reset the form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
